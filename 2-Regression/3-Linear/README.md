@@ -213,7 +213,7 @@ To see how accurate our model is, we can predict prices on a test dataset, and t
 pred = lin_reg.predict(X_test)
 
 rmse = np.sqrt(mean_squared_error(y_test,pred))
-print(f'Mean error: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
+print(f'RMSE: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
 ```
 
 Our error seems to be around 2 points, which is ~17%. Not too good. Another indicator of model quality is the **coefficient of determination**, which can be obtained like this:
