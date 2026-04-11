@@ -19,4 +19,4 @@ In this section of the curriculum, you will be introduced to the fundamental con
 
 "Fairness and Machine Learning" was written with ♥️ by [Tomomi Imura](https://twitter.com/girliemac) 
 
-"Techniques of Machine Learning" was written with ♥️ by [Jen Looper](https://twitter.com/jenlooper) and [Chris Noring](https://twitter.com/softchris) 
+"Techniques of Machine Learning" was written with ♥️ by [Jen Looper](https://twitter.com/jenlooper) and [Chris Noring](https://twitter.com/softchris)
