@@ -130,7 +130,7 @@ print(new_pumpkins['Month'].corr(new_pumpkins['Price']))
 print(new_pumpkins['DayOfYear'].corr(new_pumpkins['Price']))
 ```
 
-It looks like the correlation is pretty small, -0.15 by `Month` and -0.17 by the `DayOfMonth`, but there could be another important relationship. It looks like there are different clusters of prices corresponding to different pumpkin varieties. To confirm this hypothesis, let's plot each pumpkin category using a different color. By passing an `ax` parameter to the `scatter` plotting function we can plot all points on the same graph:
+It looks like the correlation is pretty small, -0.15 by `Month` and -0.17 by the `DayOfYear`, but there could be another important relationship. It looks like there are different clusters of prices corresponding to different pumpkin varieties. To confirm this hypothesis, let's plot each pumpkin category using a different color. By passing an `ax` parameter to the `scatter` plotting function we can plot all points on the same graph:
 
 ```python
 ax=None
@@ -262,7 +262,7 @@ Pipelines can be used in the same manner as the original `LinearRegression` obje
 
 <img alt="Polynomial regression" src="images/poly-results.png" width="50%" />
 
-Using Polynomial Regression, we can get slightly lower MSE and higher determination, but not significantly. We need to take into account other features!
+Using Polynomial Regression, we can get slightly lower RMSE and higher determination, but not significantly. We need to take into account other features!
 
 > You can see that the minimal pumpkin prices are observed somewhere around Halloween. How can you explain this? 
 
@@ -319,7 +319,7 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
 y = new_pumpkins['Price']
 ```
 
-Here we also take into account `City` and `Package` type, which gives us MSE 2.84 (10%), and determination 0.94!
+Here we also take into account `City` and `Package` type, which gives us RMSE 2.84 (10%), and determination 0.94!
 
 ## Putting it all together
 
@@ -343,17 +343,17 @@ pipeline.fit(X_train,y_train)
 # predict results for test data
 pred = pipeline.predict(X_test)
 
-# calculate MSE and determination
-mse = np.sqrt(mean_squared_error(y_test,pred))
-print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
+# calculate RMSE and determination
+rmse = np.sqrt(mean_squared_error(y_test,pred))
+print(f'RMSE: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
 ```
 
-This should give us the best determination coefficient of almost 97%, and MSE=2.23 (~8% prediction error).
+This should give us the best determination coefficient of almost 97%, and RMSE=2.23 (~8% prediction error).
 
-| Model | MSE | Determination |
+| Model | RMSE | Determination |
 |-------|-----|---------------|
 | `DayOfYear` Linear | 2.77 (17.2%) | 0.07 |
 | `DayOfYear` Polynomial | 2.73 (17.0%) | 0.08 |
