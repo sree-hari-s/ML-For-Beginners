@@ -263,8 +263,8 @@ Pipelines can be used in the same manner as the original `LinearRegression` obje
 ```python
 pred = pipeline.predict(X_test)
 
-mse = np.sqrt(mean_squared_error(y_test,pred))
-print(f'Mean error: {mse:3.3} ({mse/np.mean(pred)*100:3.3}%)')
+rmse = np.sqrt(mean_squared_error(y_test,pred))
+print(f'RMSE: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
