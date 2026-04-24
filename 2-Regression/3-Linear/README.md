@@ -344,8 +344,8 @@ pipeline.fit(X_train,y_train)
 pred = pipeline.predict(X_test)
 
 # calculate RMSE and determination
-rmse = np.sqrt(mean_squared_error(y_test,pred))
-print(f'RMSE: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
+rmse = mean_squared_error(y_test, pred, squared=False)
+print(f'RMSE: {rmse:3.3} ({rmse/pred.mean()*100:3.3}%)')
 
 score = pipeline.score(X_train,y_train)
 print('Model determination: ', score)
