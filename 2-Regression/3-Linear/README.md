@@ -258,7 +258,29 @@ pipeline.fit(X_train,y_train)
 
 Using `PolynomialFeatures(2)` means that we will include all second-degree polynomials from the input data. In our case it will just mean `DayOfYear`<sup>2</sup>, but given two input variables X and Y, this will add X<sup>2</sup>, XY and Y<sup>2</sup>. We may also use higher degree polynomials if we want.
 
-Pipelines can be used in the same manner as the original `LinearRegression` object, i.e. we can `fit` the pipeline, and then use `predict` to get the prediction results. Here is the graph showing test data, and the approximation curve:
+Pipelines can be used in the same manner as the original `LinearRegression` object, i.e. we can `fit` the pipeline, and then use `predict` to get the prediction results:
+
+```python
+pred = pipeline.predict(X_test)
+
+rmse = np.sqrt(mean_squared_error(y_test,pred))
+print(f'RMSE: {rmse:3.3} ({rmse/np.mean(pred)*100:3.3}%)')
+
+score = pipeline.score(X_train,y_train)
+print('Model determination: ', score)
+```
+
+To plot the smooth approximation curve, we use `np.linspace` to create a uniform range of input values, rather than plotting directly on the unordered test data (which would produce a zigzag line):
+
+```python
+X_range = np.linspace(X_test.min(), X_test.max(), 100).reshape(-1,1)
+y_range = pipeline.predict(X_range)
+
+plt.scatter(X_test, y_test)
+plt.plot(X_range, y_range)
+```
+
+Here is the graph showing test data, and the approximation curve:
 
 <img alt="Polynomial regression" src="images/poly-results.png" width="50%" />
 
