@@ -319,7 +319,7 @@ X = pd.get_dummies(new_pumpkins['Variety']) \
 y = new_pumpkins['Price']
 ```
 
-Here we also take into account `City` and `Package` type, which gives us RMSE 2.84 (10%), and determination 0.94!
+Here we also take into account `City` and `Package` type, which gives us RMSE 2.84 (10.5%), and determination 0.94!
 
 ## Putting it all together
 
